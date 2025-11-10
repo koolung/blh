@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FECD8C;
   --foreground: #171717;
 }
 
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #FECD8C;
+    --foreground: #171717;
   }
 }
 
@@ -23,4 +23,92 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FECD8C;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e6b87d;
+}
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Fancy Button Animations */
+@keyframes outer-dashoffset {
+  0% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 336.05px 336.05px;
+  }
+  50% {
+    stroke-dasharray: 224.03px 448.07px;
+  }
+  100% {
+    stroke-dashoffset: 672.1px;
+    stroke-dasharray: 336.05px 336.05px;
+  }
+}
+
+@keyframes inner-dashoffset {
+  0% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 336.05px 336.05px;
+  }
+  50% {
+    stroke-dasharray: 224.03px 448.07px;
+  }
+  100% {
+    stroke-dashoffset: -672.1px;
+    stroke-dasharray: 336.05px 336.05px;
+  }
+}
+
+.button-line-outer {
+  animation: outer-dashoffset 6s linear infinite;
+}
+
+.button-line-inner {
+  animation: inner-dashoffset 5s linear infinite;
+}
+
+.fancy-button:hover .button-line-outer,
+.fancy-button:hover .button-line-inner {
+  animation-play-state: paused;
 }
