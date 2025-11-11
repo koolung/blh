@@ -53,6 +53,16 @@ html {
   background: #e6b87d;
 }
 
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Infinite scroll animation */
 @keyframes scroll {
   0% {

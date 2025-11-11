@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,40 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setMenuOpen(false);
+  };
+
+  const navItems = ['home', 'services', 'gallery', 'contact'];
+  
+  const directLinks = [
+    'Instagram',
+    'Facebook', 
+    'Book Online',
+    'Call Us',
+    'Location'
+  ];
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.05 * i
+      }
+    })
+  };
+
+  const childContainer = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
   };
 
   return (
@@ -33,7 +68,7 @@ export default function Navbar() {
       style={{ borderBottomLeftRadius: '15px', borderBottomRightRadius: '15px' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-15">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -61,7 +96,7 @@ export default function Navbar() {
           </motion.div>
 
           <div className="hidden md:flex space-x-8">
-            {['home', 'services', 'gallery', 'contact'].map((item, index) => (
+            {navItems.map((item, index) => (
               <motion.button
                 key={item}
                 initial={{ opacity: 0, y: -20 }}
@@ -69,7 +104,7 @@ export default function Navbar() {
                 transition={{ delay: 0.1 * index }}
                 onClick={() => scrollToSection(item)}
                 className={`capitalize font-medium transition-colors ${
-                  scrolled ? 'text-gray-800 hover:text-pink-600' : 'text-white hover:text-pink-300'
+                  scrolled ? 'text-gray-800 hover:text-[#FECD8C]' : 'text-white hover:text-[#FECD8C]'
                 }`}
               >
                 {item}
@@ -77,17 +112,102 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Desktop Book Now Button */}
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={() => scrollToSection('contact')}
-            className="bg-[#FECD8C] text-gray-800 px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow"
+            className="hidden md:block bg-[#FECD8C] text-gray-800 px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow"
           >
             Book Now
           </motion.button>
+
+          {/* Mobile Hamburger Menu */}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden relative w-6 h-4 flex flex-col justify-between z-50"
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={{
+                rotate: menuOpen ? 45 : 0,
+                y: menuOpen ? 7 : 0,
+              }}
+              transition={{ duration: 0.3 }}
+              className={`block h-0.5 w-full ${menuOpen ? 'bg-white' : scrolled ? 'bg-gray-800' : 'bg-white'} `}
+            />
+            <motion.span
+              animate={{
+                rotate: menuOpen ? -45 : 0,
+                y: menuOpen ? -8 : 0,
+              }}
+              transition={{ duration: 0.3 }}
+              className={`block h-0.5 w-full ${menuOpen ? 'bg-white' : scrolled ? 'bg-gray-800' : 'bg-white'} `}
+            />
+          </motion.button>
         </div>
       </div>
+
+      {/* Mobile Slide-out Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="fixed top-0 right-0 h-screen w-3/4 bg-black/95 backdrop-blur-md z-40 flex flex-col justify-center items-center px-8"
+          >
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="flex flex-col space-y-8 w-64"
+            >
+              {navItems.map((item, index) => (
+                <div key={item} className="overflow-hidden">
+                  <motion.button
+                    variants={childContainer}
+                    onClick={() => scrollToSection(item)}
+                    className="text-3xl font-extrabold uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#FECD8C] to-[#e6b87d] text-left w-full"
+                  >
+                    {item}
+                  </motion.button>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Directly To Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mt-12 border-[3px] border-[#FECD8C] rounded-[15px] p-6 w-64"
+            >
+              <h3 className="text-white font-bold uppercase text-lg mb-4">Directly To</h3>
+              <div className="flex flex-col space-y-3">
+                {directLinks.map((link, index) => (
+                  <motion.button
+                    key={link}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-white/80 hover:text-[#FECD8C] text-base text-left transition-colors"
+                  >
+                    {link}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

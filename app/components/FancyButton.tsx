@@ -14,8 +14,8 @@ export default function FancyButton({ onClick, children }: FancyButtonProps) {
     <motion.button
       onClick={onClick}
       className="fancy-button relative w-[300px] h-[80px] bg-transparent border-none cursor-pointer"
-      style={{ color: '#98A5A6' }}
-      whileHover={{ scale: 1.05, color: '#BEC3C7' }}
+      style={{ color: '#FECD8C' }}
+      whileHover={{ scale: 1.05, color: '#e6b87d' }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.3 }}
     >

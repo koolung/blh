@@ -19,6 +19,10 @@ export default function IntroReveal() {
             setTimeout(() => {
               setIsHighlighted(true);
             }, 1600);
+          } else {
+            // Reset animation when scrolling away
+            setIsVisible(false);
+            setIsHighlighted(false);
           }
         });
       },
@@ -57,14 +61,15 @@ export default function IntroReveal() {
             fill
             className="object-cover"
             priority
+            style={{ borderRadius: '30px' }}
           />
           
-          {/* Highlight overlay effect */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isHighlighted ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-gradient-to-r from-black/40 from-70% to-white/20 pointer-events-none"
+            className="absolute inset-0 bg-gradient-to-r from-black/40 from-70% to-white/20 pointer-events-none border-[5px] border-[#474037]"
+            style={{ borderRadius: '30px' }}
           />
 
           {/* Popup Caption */}
@@ -77,19 +82,33 @@ export default function IntroReveal() {
             <div className="backdrop-blur-md rounded-2xl shadow-2xl px-8 py-4 w-full" style={{ backgroundColor: 'lab(10 0 0 / 0.95)' }}>
               <div className="flex items-center justify-center gap-3 mb-2">
                 <Image src="/images/star.svg" alt="Star" width={55} height={55} style={{ filter: 'brightness(0) invert(1)' }} />
-                <span className="text-2xl font-bold text-[#FECD8C] uppercase">
-                  5.0 Rating
+                <span className="text-2xl font-extrabold text-[#FECD8C] uppercase">
+                  4.9 Rating
                 </span>
               </div>
-              <p className="text-center text-white font-medium text-lg fontweight-semibold">
-                Best Rated Salon on Google Map
-              </p>
-              <p className="text-center text-sm mt-1" style={{ color: 'lab(95 0 -0.01)' }}>
+              <div className="text-center text-white font-medium text-medium font-bold flex flex-col items-center justify-center gap-0">
+                <span>Best Rated Salon on</span>
+                <motion.a 
+                  href="https://share.google/8XUBM4oyIkTGLZ3fY" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center hover:opacity-80 transition-opacity"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                >
+                  <Image src="/images/google-maps-logo.svg" alt="Google Maps" width={208} height={62} />
+                </motion.a>
+              </div>
+              <p className="text-center text-sm" style={{ color: 'lab(95 0 -0.01)' }}>
                 with 200+ real reviews
               </p>
               
               {/* Decorative elements */}
-              <div className="flex justify-center gap-1 mt-3">
+              <div className="flex justify-center gap-1">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <motion.span
                     key={star}

@@ -72,28 +72,19 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-start px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 invisible h-0">
-            Beauté Lia Hair Salon Halifax Nova Scotia
+          <h1 className="font-bold uppercase -mb-4" style={{ fontSize: 'clamp(1.2rem, 5.5vw, 2rem)', color: '#FECD8C' }}>
+            TIRED of FINDING <span className="whitespace-nowrap text-white" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', position: 'relative', top: '-0.7rem' }}>"THE HAIR SALON"?</span>
           </h1>
-          <h1 className="font-bold text-white mb-6 uppercase" style={{ fontSize: '3rem' }}>
-            TIRED FINDING <span className="whitespace-nowrap" style={{ fontSize: '2rem' }}>"THE HAIR SALON"?</span>
-          </h1>
+          <p className="text-sm md:text-base text-transparent/70">
+            Beauté Lia Hair - Premier Hair Salon in Halifax, Nova Scotia
+          </p>
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-8"
-        >
-          Where Beauty Meets Excellence
-        </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
@@ -101,14 +92,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto"
         >
-          Experience luxury hair care with our expert stylists. Transform your look with precision cuts, stunning color, and personalized treatments.
+          Korean Hair Salon in Halifax, Nova Scotia
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <FancyButton onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
             Book Appointment
@@ -128,7 +119,7 @@ export default function Hero() {
           transition={{ duration: 1.5, repeat: Infinity }}
           className="text-white text-center"
         >
-          <div className="text-sm mb-2">Scroll Down</div>
+          <div className="text-sm mb-2">Find out WHY Beaute Lia Hair</div>
           <div className="w-6 h-10 border-2 border-white rounded-full mx-auto flex justify-center">
             <motion.div
               animate={{ y: [0, 12, 0] }}
