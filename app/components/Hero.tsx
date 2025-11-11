@@ -22,7 +22,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative h-[85vh] flex items-center justify-center overflow-hidden" style={{ borderBottomLeftRadius: '30px', borderBottomRightRadius: '30px' }}>
+    <section id="home" className="relative h-[75vh] flex items-center justify-center overflow-hidden" style={{ borderBottomLeftRadius: '30px', borderBottomRightRadius: '30px' }}>
       {/* Carousel Background Images */}
       <AnimatePresence initial={false}>
         <motion.div
