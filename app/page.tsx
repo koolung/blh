@@ -18,7 +18,6 @@ export default function Home() {
         <IntroReveal />
         <Services />
         <Kids />
-        <Gallery />
         <Contact />
       </main>
       <Footer />

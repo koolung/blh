@@ -52,7 +52,7 @@ export default function Kids() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-4xl md:text-6xl font-extrabold text-white text-center px-4"
+          className="text-4xl md:text-5xl font-extrabold text-white text-center px-4 uppercase"
           style={{
             textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
           }}

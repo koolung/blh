@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,22 +20,62 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll to section on home page
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get('section');
+    if (section && pathname === '/') {
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [pathname]);
+
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (id === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setMenuOpen(false);
   };
 
-  const navItems = ['home', 'services', 'gallery', 'contact'];
+  const handleNavClick = (item: string) => {
+    if (item === 'home') {
+      if (pathname !== '/') {
+        router.push('/');
+      } else {
+        scrollToSection('home');
+      }
+    } else if (item === 'services') {
+      if (pathname !== '/') {
+        router.push('/?section=services');
+      } else {
+        scrollToSection('services');
+      }
+    } else if (item === 'book now') {
+      window.open('https://dikidi.app/962128', '_blank');
+    } else if (item === 'contact') {
+      window.location.href = 'tel:9029895949';
+    } else {
+      scrollToSection(item);
+    }
+  };
+
+  const navItems = ['home', 'services', 'book now', 'contact'];
   
   const directLinks = [
-    'Instagram',
-    'Facebook', 
-    'Book Online',
-    'Call Us',
-    'Location'
+    { name: 'Instagram', url: 'https://www.instagram.com/beaute_lia_hairsalon/' },
+    { name: 'Book Online', url: 'https://dikidi.app/962128' },
+    { name: 'Call Us', url: 'tel:9029895949' },
+    { name: 'Location', url: 'https://www.google.com/maps/place/Beauté+Lia+Hair/' },
+    { name: 'Work With Us', url: '/work-with-us' }
   ];
 
   const container = {
@@ -102,7 +145,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
-                onClick={() => scrollToSection(item)}
+                onClick={() => handleNavClick(item)}
                 className={`capitalize font-medium transition-colors ${
                   scrolled ? 'text-gray-800 hover:text-[#FECD8C]' : 'text-white hover:text-[#FECD8C]'
                 }`}
@@ -113,15 +156,20 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Book Now Button */}
-          <motion.button
+          <motion.a
+            href="https://dikidi.app/962128"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            onClick={() => scrollToSection('contact')}
-            className="hidden md:block bg-[#FECD8C] text-gray-800 px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow"
+            whileHover={{ scale: 1.08, boxShadow: "0 20px 40px rgba(254, 205, 140, 0.4)" }}
+            whileTap={{ scale: 0.95 }}
+            className="hidden md:block bg-gradient-to-r from-[#FECD8C] to-[#e6b87d] text-black px-10 py-4 rounded-full font-extrabold text-lg shadow-2xl hover:shadow-[0_0_30px_rgba(254,205,140,0.6)] transition-all border-2 border-[#FECD8C]"
+            style={{ boxShadow: "0 10px 25px rgba(254, 205, 140, 0.3)" }}
           >
             Book Now
-          </motion.button>
+          </motion.a>
 
           {/* Mobile Hamburger Menu */}
           <motion.button
@@ -173,7 +221,7 @@ export default function Navbar() {
                 <div key={item} className="overflow-hidden">
                   <motion.button
                     variants={childContainer}
-                    onClick={() => scrollToSection(item)}
+                    onClick={() => handleNavClick(item)}
                     className="text-3xl font-extrabold uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#FECD8C] to-[#e6b87d] text-left w-full"
                   >
                     {item}
@@ -192,16 +240,19 @@ export default function Navbar() {
               <h3 className="text-white font-bold uppercase text-lg mb-4">Directly To</h3>
               <div className="flex flex-col space-y-3">
                 {directLinks.map((link, index) => (
-                  <motion.button
-                    key={link}
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target={link.url.startsWith('http') ? '_blank' : undefined}
+                    rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 + index * 0.1 }}
                     onClick={() => setMenuOpen(false)}
                     className="text-white/80 hover:text-[#FECD8C] text-base text-left transition-colors"
                   >
-                    {link}
-                  </motion.button>
+                    {link.name}
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
