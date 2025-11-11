@@ -4,7 +4,6 @@ import CarouselImages from './components/CarouselImages';
 import IntroReveal from './components/IntroReveal';
 import Services from './components/Services';
 import Kids from './components/Kids';
-import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
