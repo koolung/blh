@@ -1,7 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      execute: (siteKey: string, { action }: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -15,10 +23,16 @@ export default function Footer() {
     setMessage('');
 
     try {
+      // Get reCAPTCHA token
+      const recaptchaToken = await window.grecaptcha.execute(
+        '6Lch0Q8sAAAAAIRIUsjImTKJRM3HWbwj5eIchx57',
+        { action: 'subscribe' }
+      );
+
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, recaptchaToken }),
       });
 
       const data = await response.json();
