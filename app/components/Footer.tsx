@@ -68,7 +68,7 @@ export default function Footer() {
               Beauté Lia Hair
             </h3>
             <p className="text-gray-400">
-              Transforming beauty through expert hair care and personalized styling since 2010.
+              Transforming beauty through expert hair care and personalized styling since since 1980.
             </p>
           </motion.div>
 
@@ -80,7 +80,7 @@ export default function Footer() {
           >
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['Home', 'Services', 'Gallery', 'Contact'].map((link) => (
+              {['Home', 'Services', 'Contact'].map((link) => (
                 <li key={link}>
                   <button
                     onClick={() => document.getElementById(link.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
@@ -139,6 +139,17 @@ export default function Footer() {
           className="border-t border-gray-700 pt-8 text-center text-gray-400"
         >
           <p>&copy; {new Date().getFullYear()} Beauté Lia Hair. All rights reserved.</p>
+          <p className="text-sm mt-2">
+            Built by{' '}
+            <a
+              href="https://www.bedfordwebservices.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FECD8C] hover:text-white transition-colors"
+            >
+              BWS
+            </a>
+          </p>
         </motion.div>
       </div>
     </footer>

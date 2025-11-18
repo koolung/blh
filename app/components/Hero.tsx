@@ -101,7 +101,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <FancyButton onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+          <FancyButton onClick={() => window.open('https://dikidi.app/962128', '_blank')}>
             Book Appointment
           </FancyButton>
         </motion.div>

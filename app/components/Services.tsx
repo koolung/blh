@@ -168,20 +168,21 @@ export default function Services() {
             ))}
 
             {/* Browse More Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.5, delay: services.length * 0.1 }}
-              className="relative flex-shrink-0 w-[82%] h-full rounded-[10px] overflow-hidden snap-start bg-[#001317] flex flex-col items-center justify-center px-[10%] text-center"
-            >
-              <h3 className="text-3xl font-bold text-[#FECD8C] mb-6">Browse More Services</h3>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 rounded-[15px] border-[3px] border-[#FECD8C] bg-transparent text-[#FECD8C] font-semibold text-lg mb-6"
+            <Link href="/services">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                transition={{ duration: 0.5, delay: services.length * 0.1 }}
+                className="relative flex-shrink-0 w-[82%] h-full rounded-[10px] overflow-hidden snap-start bg-[#001317] flex flex-col items-center justify-center px-[10%] text-center cursor-pointer"
               >
-                Browse More
-              </motion.button>
+                <h3 className="text-3xl font-bold text-[#FECD8C] mb-6">Browse More Services</h3>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 rounded-[15px] border-[3px] border-[#FECD8C] bg-transparent text-[#FECD8C] font-semibold text-lg mb-6"
+                >
+                  Browse More
+                </motion.button>
               
               {/* Instagram Icon */}
               <motion.a
@@ -199,7 +200,8 @@ export default function Services() {
                   </svg>
                 </div>
               </motion.a>
-            </motion.div>
+              </motion.div>
+            </Link>
           </div>
 
           {/* Navigation Arrows */}
@@ -277,21 +279,22 @@ export default function Services() {
           ))}
 
           {/* Browse More Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.5, delay: services.length * 0.1 }}
-            whileHover={{ y: -10, transition: { duration: 0.2 } }}
-            className="bg-black rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col items-center justify-center min-h-[300px] px-[10%] text-center"
-          >
-            <h3 className="text-3xl font-bold text-[#FECD8C] mb-6">Browse More Services</h3>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-[15px] border-[3px] border-[#FECD8C] bg-transparent text-[#FECD8C] font-semibold text-lg mb-6"
+          <Link href="/services">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.5, delay: services.length * 0.1 }}
+              whileHover={{ y: -10, transition: { duration: 0.2 } }}
+              className="bg-black rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col items-center justify-center min-h-[300px] px-[10%] text-center"
             >
-              Browse More
-            </motion.button>
+              <h3 className="text-3xl font-bold text-[#FECD8C] mb-6">Browse More Services</h3>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 rounded-[15px] border-[3px] border-[#FECD8C] bg-transparent text-[#FECD8C] font-semibold text-lg mb-6"
+              >
+                Browse More
+              </motion.button>
             
             {/* Instagram Icon */}
             <motion.a
@@ -309,7 +312,8 @@ export default function Services() {
                 </svg>
               </div>
             </motion.a>
-          </motion.div>
+            </motion.div>
+          </Link>
         </div>
       </div>
     </section>
