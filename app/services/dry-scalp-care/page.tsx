@@ -48,7 +48,7 @@ export default function DryScalpCareService() {
             <div className="bg-[#001317] p-3 pt-4 pb-4 rounded-2xl shadow-lg text-center">
               <div className="text-3xl mb-3">💰</div>
               <h3 className="text-lg font-bold text-[#FECD8C] mb-2">Price</h3>
-              <p className="text-2xl font-bold text-[white]">from $45</p>
+              <p className="text-2xl font-bold text-[white]">from $80</p>
             </div>
 
             <div className="bg-[#001317] p-3 pt-4 pb-4 rounded-2xl shadow-lg text-center">
@@ -107,7 +107,7 @@ export default function DryScalpCareService() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-[#001317] p-8 md:p-12 rounded-2xl shadow-lg text-center"
+            className="bg-[#001317] p-8 md:p-12 rounded-2xl shadow-lg text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-[#FECD8C] mb-6">Ready to Book?</h2>
             <motion.a
@@ -120,6 +120,42 @@ export default function DryScalpCareService() {
             >
               Book Now
             </motion.a>
+          </motion.div>
+
+          {/* Add-on and Save Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="bg-gradient-to-r from-[#001317] to-[#003a42] p-8 md:p-12 rounded-2xl shadow-lg border-3 border-[#FECD8C]"
+          >
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#FECD8C] mb-2">✨ Add-on and Save up to 15%!</h2>
+              <p className="text-lg text-white">Bundle services for maximum savings</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <motion.div whileHover={{ y: -5 }} className="bg-white/10 p-6 rounded-xl border-2 border-[#FECD8C]/50 hover:border-[#FECD8C] transition-all">
+                <h3 className="text-2xl font-bold text-[#FECD8C] mb-3">💆 Dry Scalp Care</h3>
+                <p className="text-white mb-4">Specialized treatment to soothe and nourish your dry, flaky scalp with our premium care system</p>
+                <p className="text-[#FECD8C] font-semibold">from $80 • 30 minutes</p>
+              </motion.div>
+
+              <motion.div whileHover={{ y: -5 }} className="bg-white/10 p-6 rounded-xl border-2 border-[#FECD8C]/50 hover:border-[#FECD8C] transition-all">
+                <h3 className="text-2xl font-bold text-[#FECD8C] mb-3">✂️ Professional Cut</h3>
+                <p className="text-white mb-4">Get a fresh, expertly crafted cut tailored to your style and face shape by our skilled stylists</p>
+                <p className="text-[#FECD8C] font-semibold">from $30-35 • 30 minutes</p>
+              </motion.div>
+            </div>
+
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }} className="bg-[#FECD8C]/20 p-6 rounded-xl border-2 border-[#FECD8C] text-center">
+              <p className="text-white text-lg mb-4"><span className="text-[#FECD8C] font-bold text-2xl">💰 Save up to 15%</span> when you bundle these services together!</p>
+              <p className="text-white/80 mb-6">Combine your color service with a dry scalp treatment and fresh cut for the ultimate salon experience</p>
+              <motion.a href="https://dikidi.app/962128" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block px-8 py-3 bg-[#FECD8C] text-[#001317] font-extrabold rounded-full hover:shadow-[0_0_20px_rgba(254,205,140,0.8)] transition-all">
+                Book Bundle Now
+              </motion.a>
+            </motion.div>
           </motion.div>
         </div>
       </section>

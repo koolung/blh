@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -112,31 +113,33 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-15">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="relative w-40 h-12"
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={scrolled ? 'black' : 'white'}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={scrolled ? '/images/logo/black.svg' : '/images/logo/white.svg'}
-                  alt="Beauté Lia Hair"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="relative w-40 h-12 cursor-pointer"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={scrolled ? 'black' : 'white'}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={scrolled ? '/images/logo/black.svg' : '/images/logo/white.svg'}
+                    alt="Beauté Lia Hair"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+          </Link>
 
           <div className="hidden md:flex space-x-8">
             {navItems.map((item, index) => (
@@ -163,12 +166,20 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            whileHover={{ scale: 1.08, boxShadow: "0 20px 40px rgba(254, 205, 140, 0.4)" }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:block bg-gradient-to-r from-[#FECD8C] to-[#e6b87d] text-black px-10 py-4 rounded-full font-extrabold text-lg shadow-2xl hover:shadow-[0_0_30px_rgba(254,205,140,0.6)] transition-all border-2 border-[#FECD8C]"
-            style={{ boxShadow: "0 10px 25px rgba(254, 205, 140, 0.3)" }}
+            className={`hidden md:flex items-center justify-between gap-4 border-2 rounded-full px-5 py-1.5 bg-transparent transition-all ${
+              scrolled ? 'border-gray-700' : 'border-gray-300'
+            }`}
           >
-            Book Now
+            <span className={`font-semibold ${scrolled ? 'text-gray-800' : 'text-white'}`}>
+              Book Now
+            </span>
+            <div className="w-10 h-10 rounded-full bg-[#FECD8C] flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2d2d2d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
           </motion.a>
 
           {/* Mobile Hamburger Menu */}

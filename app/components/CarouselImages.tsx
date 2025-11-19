@@ -24,7 +24,7 @@ export default function CarouselImages() {
           {duplicatedLogos.map((logo, index) => (
             <div
               key={index}
-              className="flex-shrink-0 relative overflow-hidden border-4 border-white"
+              className="flex-shrink-0 relative overflow-hidden border-4 md:border border-white"
               style={{ 
                 width: '140px', 
                 height: '180px',

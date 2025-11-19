@@ -79,7 +79,9 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="font-bold uppercase -mb-4" style={{ fontSize: 'clamp(1.2rem, 5.5vw, 2rem)', color: '#FECD8C' }}>
-            TIRED of FINDING <span className="whitespace-nowrap text-white" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', position: 'relative', top: '-0.7rem' }}>"THE HAIR SALON"?</span>
+            <span>TIRED of FINDING</span>
+            <br />
+            <span className="text-white" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)' }}>"THE HAIR SALON"?</span>
           </h1>
           <p className="text-sm md:text-base text-transparent/70">
             Beauté Lia Hair - Premier Hair Salon in Halifax, Nova Scotia

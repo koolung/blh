@@ -44,7 +44,7 @@ export default function IntroReveal() {
   }, []);
 
   return (
-    <section className="w-full relative bg-gradient-to-b">
+    <section className="w-full relative bg-gradient-to-b md:px-[20%]">
       <div 
         ref={imageRef}
         className="w-full relative"
@@ -53,7 +53,7 @@ export default function IntroReveal() {
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="relative w-full h-[400px] md:h-[600px] lg:h-[700px]"
+          className="relative w-full h-[400px] md:h-[450px] lg:h-[500px]"
         >
           <Image
             src="/images/intro/intro1.png"
@@ -68,7 +68,7 @@ export default function IntroReveal() {
             initial={{ opacity: 0 }}
             animate={isHighlighted ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-gradient-to-r from-black/40 from-70% to-white/20 pointer-events-none border-[5px] border-[#474037]"
+            className="absolute inset-0 bg-gradient-to-r from-black/40 from-70% to-white/20 pointer-events-none border-[5px] md:border-[2px] border-[#474037]"
             style={{ borderRadius: '30px' }}
           />
 

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function ServicesAndPricing() {
   const [isOpen, setIsOpen] = useState(false);
@@ -117,7 +118,16 @@ export default function ServicesAndPricing() {
                     index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
                   }`}
                 >
-                  <td className="px-4 md:px-8 py-4 text-sm md:text-base font-medium text-gray-800">{service.name}</td>
+                  <td className="px-4 md:px-8 py-4 text-sm md:text-base font-medium text-gray-800">
+                    <a 
+                      href="https://dikidi.app/962128" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-[#001317] hover:text-[#FECD8C] hover:underline transition-colors cursor-pointer"
+                    >
+                      {service.name}
+                    </a>
+                  </td>
                   <td className="px-4 md:px-8 py-4 text-sm md:text-base text-gray-600">{service.duration}</td>
                   <td className="px-4 md:px-8 py-4 text-sm md:text-base font-semibold text-[#FECD8C]">{service.price}</td>
                 </motion.tr>
