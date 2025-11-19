@@ -23,8 +23,8 @@ export default function Kids() {
   }, []);
 
   return (
-    <section className="w-full relative py-8 md:px-28">
-      <div className="w-full relative h-[40vh] overflow-hidden rounded-[30px] md:rounded-[15px]">
+    <section className="w-full relative py-8 md:px-118">
+      <div className="w-full relative h-[40vh] overflow-hidden rounded-[30px] md:rounded-[15px] md:h-[50vh]">
         {/* Background Images with Transition */}
         <AnimatePresence mode="wait">
           <motion.div

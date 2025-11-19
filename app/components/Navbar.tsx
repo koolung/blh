@@ -111,7 +111,7 @@ export default function Navbar() {
       }`}
       style={{ borderBottomLeftRadius: '15px', borderBottomRightRadius: '15px' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-2">
         <div className="flex justify-between items-center h-15">
           <Link href="/">
             <motion.div
@@ -168,7 +168,7 @@ export default function Navbar() {
             transition={{ delay: 0.3 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`hidden md:flex items-center justify-between gap-4 border-2 rounded-full px-5 py-1.5 bg-transparent transition-all ${
+            className={`hidden md:flex items-center justify-between gap-4 border-2 rounded-full px-5 py-1 bg-transparent transition-all ${
               scrolled ? 'border-gray-700' : 'border-gray-300'
             }`}
           >
