@@ -2,7 +2,6 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const services = [
@@ -13,7 +12,7 @@ const services = [
     description: 'Sophisticated ash blonde gradient with seamless color transition',
     price: 'From $280',
     duration: '2 hrs',
-    image: '/images/services/ash-blonde-ombre.gif',
+    video: '/images/services/ash-blonde-ombre.mp4',
     route: '/services/ash-blonde-ombre'
   },
   {
@@ -23,7 +22,7 @@ const services = [
     description: 'Hand-painted highlights for a natural, sun-kissed look',
     price: 'From $280',
     duration: '2 hrs',
-    image: '/images/services/balayage.gif',
+    video: '/images/services/balayage.mp4',
     route: '/services/balayage'
   },
   {
@@ -33,7 +32,7 @@ const services = [
     description: 'Beautiful blonde balayage with dimensional tones',
     price: 'From $280',
     duration: '2 hrs',
-    image: '/images/services/blonde-balayage.gif',
+    video: '/images/services/blonde-balayage.mp4',
     route: '/services/blonde-balayage'
   },
   {
@@ -43,7 +42,7 @@ const services = [
     description: 'Specialized treatment to soothe and nourish dry, flaky scalp',
     price: 'From $80',
     duration: '0.5 hrs',
-    image: '/images/services/dry-scalp-care.gif',
+    video: '/images/services/dry-scalp-care.mp4',
     route: '/services/dry-scalp-care'
   },
   {
@@ -53,7 +52,7 @@ const services = [
     description: 'Smooth, frizz-free hair with our signature keratin service',
     price: 'From $280',
     duration: '1 hr',
-    image: '/images/services/keratin-treatment.gif',
+    video: '/images/services/keratin-treatment.mp4',
     route: '/services/keratin-treatment'
   },
   {
@@ -63,7 +62,7 @@ const services = [
     description: 'Warm, luminous highlights in gold and beige tones',
     price: 'From $280',
     duration: '1.5 hrs',
-    image: '/images/services/light-gold-and-beige-highlight.gif',
+    video: '/images/services/light-gold-and-beige-highlight.mp4',
     route: '/services/light-gold-and-beige-highlight'
   }
 ];
@@ -163,14 +162,17 @@ export default function Services() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative flex-shrink-0 w-[82%] h-full rounded-[10px] overflow-hidden snap-start"
               >
-                {/* Background Image */}
+                {/* Background Video */}
                 <div className="absolute inset-0">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                  />
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src={service.video} type="video/mp4" />
+                  </video>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 </div>
 
@@ -272,14 +274,17 @@ export default function Services() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative flex-shrink-0 w-[45%] lg:w-[30%] h-full rounded-[10px] overflow-hidden"
               >
-                {/* Background Image */}
+                {/* Background Video */}
                 <div className="absolute inset-0">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                  />
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src={service.video} type="video/mp4" />
+                  </video>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 </div>
 

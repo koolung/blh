@@ -10,10 +10,16 @@ export default function BalayageService() {
       <Navbar />
       
       {/* Hero Section */}
-      <section 
-        className="relative h-[55vh] pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-cover bg-center rounded-b-[30px] flex flex-col justify-end"
-        style={{ backgroundImage: 'url(/images/services/balayage.gif)' }}
-      >
+      <section className="relative h-[55vh] pt-32 pb-20 px-4 sm:px-6 lg:px-8 rounded-b-[30px] flex flex-col justify-end overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/images/services/balayage.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/40 rounded-b-[30px]"></div>
         <div className="relative max-w-4xl z-10 text-left">
           <motion.h1
